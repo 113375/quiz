@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import QApplication, QFileDialog, QInputDialog, QMessageBox
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QWidget
 from PyQt5.QtGui import QPainter, QColor, QPixmap
 import shutil
+import webbrowser
+
 
 
 class CreateNewCard(QWidget):
@@ -81,14 +83,18 @@ class CreateNewCard(QWidget):
         #TODO сделать авто перевод текста с помощью API яндекса
         self.translate, ok_pressed = QInputDialog.getText(self, "Новая карточка", "Введите его перевод")
         if ok_pressed and self.translate:
+            webbrowser.register('Safari', None, webbrowser.BackgroundBrowser(
+                '/User/Desctop/Safari'))
+            webbrowser.open_new_tab(
+                f'https://www.google.com/search?q={self.word}&newwindow=1&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjp8sza_5jtAhXjwosKHbZ8BYQQ_AUoAnoECB4QBA&cshid=1606145893253510&biw=1280&bih=881')
             self.load_image()
             self.translate = self.translate.strip()
         else:
             reply = QMessageBox.question(self, 'Снова выбор',
                                          "Вы точно хотите вернуться шаг назад?", QMessageBox.Yes |
                                          QMessageBox.No, QMessageBox.No)
-
             if reply == QMessageBox.Yes:
                 self.ask_word()
             else:
                 self.ask_translate()
+
