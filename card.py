@@ -2,7 +2,7 @@ import sqlite3
 import sys
 import random as rd
 from PyQt5.QtGui import QPainter, QColor, QPixmap
-import PIL as pl
+
 from PyQt5 import uic, QtCore
 from PyQt5.QtWidgets import QApplication, QFileDialog
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QWidget

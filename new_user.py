@@ -1,13 +1,10 @@
+from PyQt5.QtWidgets import QMessageBox
 import sqlite3
-import sys
-import random as rd
-from PyQt5.QtGui import QPainter, QColor, QPixmap
-import PIL as pl
-from PyQt5 import uic, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QFileDialog, QMessageBox
-from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QWidget, QDialog
-import sqlite3
-from func import isalphadidgit, check_letter, empty_or_not, verify_password
+
+from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QMessageBox
+
+from func import check_letter, empty_or_not, verify_password
 from newUserUi import Ui_Dialog
 
 

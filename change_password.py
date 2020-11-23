@@ -1,8 +1,4 @@
-import sqlite3
-import sys
-from PyQt5.QtGui import QPainter, QColor, QPixmap
-import PIL as pl
-from PyQt5 import uic, QtCore, QtGui
+
 from PyQt5.QtWidgets import QApplication, QFileDialog, QMessageBox
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QWidget, QDialog
 from func import isempty, verify_password
