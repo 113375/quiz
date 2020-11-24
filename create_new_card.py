@@ -6,6 +6,9 @@ from PyQt5.QtWidgets import QApplication, QFileDialog, QInputDialog, QMessageBox
 from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QWidget
 from PyQt5.QtGui import QPainter, QColor, QPixmap
 import shutil
+import webbrowser
+from translation import translation
+
 
 
 class CreateNewCard(QWidget):
@@ -28,7 +31,7 @@ class CreateNewCard(QWidget):
         if ok:
             self.load_in_db()
         else:
-            self.ask_translate()
+            self.ask_word()
 
     def load_in_db(self):
         """Добавляем карточку в общий альбом"""
@@ -61,7 +64,7 @@ class CreateNewCard(QWidget):
 
     def ask_word(self):
         """запрашиваем слово на иностранном языке"""
-        self.word, ok_pressed = QInputDialog.getText(self, "Новая карточка", "Введите слово(на иностранном языке)")
+        self.word, ok_pressed = QInputDialog.getText(self, "Новая карточка", "Введите слово(на русском)")
         if ok_pressed and self.word:
             self.word = self.word.strip()
             self.ask_translate()
@@ -77,18 +80,25 @@ class CreateNewCard(QWidget):
 
     def ask_translate(self):
         """Запрашиваем перевод этого слова"""
+        self.translate = translation(self.word, "en")
 
-        #TODO сделать авто перевод текста с помощью API яндекса
-        self.translate, ok_pressed = QInputDialog.getText(self, "Новая карточка", "Введите его перевод")
-        if ok_pressed and self.translate:
+        reply = QMessageBox.question(self, 'Мы все сделали за вас',
+                                     f"Перевод этого слова на английский язык: {self.translate}", QMessageBox.Yes)
+
+        self.word, self.translate = self.translate, self.word # меняем их местами(так надо)
+        if reply == QMessageBox.Yes:
+            webbrowser.register('Safari', None, webbrowser.BackgroundBrowser(
+                '/User/Desctop/Safari'))
+            webbrowser.open_new_tab(
+                f'https://www.google.com/search?q={self.word}&newwindow=1&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjp8sza_5jtAhXjwosKHbZ8BYQQ_AUoAnoECB4QBA&cshid=1606145893253510&biw=1280&bih=881')
             self.load_image()
             self.translate = self.translate.strip()
         else:
             reply = QMessageBox.question(self, 'Снова выбор',
                                          "Вы точно хотите вернуться шаг назад?", QMessageBox.Yes |
                                          QMessageBox.No, QMessageBox.No)
-
             if reply == QMessageBox.Yes:
                 self.ask_word()
             else:
                 self.ask_translate()
+
