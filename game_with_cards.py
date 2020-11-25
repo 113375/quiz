@@ -8,7 +8,7 @@ from GameWithCardsUi import Ui_Dialog
 
 
 class GameWithCards(QDialog, Ui_Dialog):
-    def __init__(self, parent=None):
+    def __init__(self, parent):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("Заучивание сета карточек")

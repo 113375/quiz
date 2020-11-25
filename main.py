@@ -9,8 +9,8 @@ from show_all_cards import ShowAllCards
 from delete_cards import DeleteCards
 from create_new_set import CreateNewSet
 from edit_sets import ChooseSet
-from game_with_cards import GameWithCards
 from mainUi import Ui_MainWindow
+from choose_game import ChooseGame
 
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -98,13 +98,13 @@ class Main(QMainWindow, Ui_MainWindow):
                                      QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
-            self.start_game()
+            self.open_choice()
         else:
             pass
 
-    def start_game(self):
+    def open_choice(self):
         self.hide()
-        self.game = GameWithCards(self)
+        self.game = ChooseGame(par=self)
         self.game.show()
 
     def return_all_sets(self):

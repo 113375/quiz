@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-import requests
+#import requests
 
 
 def translation(word, lang):
@@ -12,7 +12,7 @@ def translation(word, lang):
     }
 
     headers = {
-        'Authorization': 'Bearer t1.9euelZqZzs-Uz8yXncrHiZCQm5OTje3rnpWai46Zz5zInYzGzMuam42SnZrl8_cWegsC-u9PWxJD_N3z91YoCQL6709bEkP8.nNbdtd1ELN4vc2apFoe8hCIZNUCRnPgHFaDy6kbER42s-klsEezh9_RvjGVSKNowMQ1HZhe1T3tsr2kCVUZ8CQ',
+        'Authorization': 'Bearer t1.9euelZrJm4zLz8iQmImej5qXipWQnO3rnpWai46Zz5zInYzGzMuam42SnZrl8_cyXQcC-u9_S0Iz_N3z93ILBQL6739LQjP8.kscbwZcJTM-MmjkQxRmzDnH51tKasKC8yfdh5H9sJHxgHN8HlA2nwW_dL87U8b1_BoyUTU-99CRfL6ZXiIcOBg',
         'Content-Type': 'application/json'}
 
     response = requests.post(
