@@ -15,7 +15,7 @@ class ChooseGame(QDialog):
         self.par = par
         super(ChooseGame, self).__init__()
         uic.loadUi('choose_game.ui', self)
-        self.setWindowTitle(f"Выбор игры с сетом: {self.par.set_name}")
+        self.setWindowTitle(f"Выбор игры с набором: {self.par.set_name}")
         self.rejected.connect(self.quit)  # если он нажмет cancle
         self.accepted.connect(self.quit)  # если он нажмет yes
         self.game1.clicked.connect(self.start_game_1)

@@ -18,7 +18,7 @@ class ChooseSet(QDialog, Ui_Dialog):
         """подключаем базу данных"""
         self.con = sqlite3.connect("quiz.db")
         self.cur = self.con.cursor()
-        self.setWindowTitle("Выбор сета")
+        self.setWindowTitle("Выбор набора")
         self.par = parent  # родитель
         self.login = self.par.login
 

@@ -11,7 +11,7 @@ class GameWithCards(QDialog, Ui_Dialog):
     def __init__(self, parent):
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle("Заучивание сета карточек")
+        self.setWindowTitle("Заучивание набора карточек")
         """Подключение базы данных"""
         self.con = sqlite3.connect("quiz.db")
         self.cur = self.con.cursor()
@@ -21,7 +21,7 @@ class GameWithCards(QDialog, Ui_Dialog):
         self.rejected.connect(self.open_choice)  # если он нажмет cancle
         self.accepted.connect(self.open_choice)  # если он нажмет yes
         self.widget = QWidget()
-        self.set_label.setText(f"Заучиваем сет: {self.par.set_name}")
+        self.set_label.setText(f"Заучиваем набор: {self.par.set_name}")
         self.game = True
         self.not_right_style = "color: rgb(125, 0, 0);font: 15pt 'Helvetica';"
         self.right_style = "color: rgb(0, 125, 0);font: 15pt 'Helvetica';"
@@ -133,7 +133,7 @@ class GameWithCards(QDialog, Ui_Dialog):
     def end_of_game(self):
         """Когда ты выучил все слова"""
         reply = QMessageBox.question(self, 'Конец, вы молодец!',
-                                     f"Вы уже заучили этот сет, вы выучили сейчас карточек: {self.lenght}",
+                                     f"Вы уже заучили этот набор, вы выучили сейчас карточек: {self.lenght}",
                                      QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:

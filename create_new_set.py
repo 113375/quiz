@@ -17,7 +17,7 @@ class CreateNewSet(QDialog, Ui_Dialog):
         """подключаем базу данных"""
         self.con = sqlite3.connect("quiz.db")
         self.cur = self.con.cursor()
-        self.setWindowTitle("Создание нового сета")
+        self.setWindowTitle("Создание нового набора карточек")
         self.par = parent  # родитель
 
         self.rejected.connect(self.open_main)  # если он нажмет cancle
@@ -119,7 +119,7 @@ class CreateNewSet(QDialog, Ui_Dialog):
 
     def title_of_sets(self):
         """Запрашиваект название сета, и если оно уникальное, продолжает"""
-        self.name, ok_pressed = QInputDialog.getText(self, "Новая карточка", "Введите название сета")
+        self.name, ok_pressed = QInputDialog.getText(self, "Новая карточка", "Введите название набора")
         if ok_pressed and self.name:
             names = self.cur.execute("""SELECT id FROM Sets WHERE login = ? AND title = ?""",
                                      (self.par.login, self.name)).fetchall()

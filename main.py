@@ -103,7 +103,6 @@ class Main(QMainWindow, Ui_MainWindow):
             pass
 
     def open_choice(self):
-        self.hide()
         self.game = ChooseGame(par=self)
         self.game.show()
 

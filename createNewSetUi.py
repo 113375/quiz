@@ -63,4 +63,4 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.create_button.setText(_translate("Dialog", "Создать новый сет"))
+        self.create_button.setText(_translate("Dialog", "Создать новый набор карточек"))

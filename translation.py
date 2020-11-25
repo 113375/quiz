@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-#import requests
+import requests
 
 
 def translation(word, lang):

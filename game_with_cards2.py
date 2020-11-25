@@ -6,20 +6,22 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QWidget, QApplication, QDialog, QInputDialog, QTableWidgetItem
 from PyQt5.QtWidgets import QWidget, QLabel, QLineEdit, QFileDialog, QButtonGroup
-from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QMessageBox
+from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QMessageBox, QGridLayout
 from PyQt5 import QtCore, QtGui, QtWidgets
 from card import Card
 
 
-class Picrure:
+class Picture(QWidget):
     def __init__(self, word, path, number, par):
+        super(Picture, self).__init__()
         self.right = False
         self.green = False
         self.count_trying = 0
         self.word = word
         self.path = path
         self.number = number
-        roll, coll = (number) // 2, number % 2
+        row, coll = (number) // 2, number % 2
+        self.setWindowTitle("Игра2")
 
         self.button = QPushButton()
         self.button.setStyleSheet("background: transparent;")
@@ -29,7 +31,7 @@ class Picrure:
 
         par.pic_button_group.addButton(self.button)
 
-        par.grid.addWidget(self.button, roll, coll)
+        par.grid.addWidget(self.button, row, coll)
 
     def check(self, word):
         return word == self.word
@@ -68,16 +70,17 @@ class Game(QWidget):
         self.fill_in_words()
 
     def fill_in_pic(self):
-        for i in range(6):
+        '''Показывает все картинки в layout'''
+        for i in range(len(self.pictures)):
             try:
                 pic = self.pictures[i]
                 word = self.dict[pic]
-                self.list_img.append(Picrure(word, pic, i, par=self))
+                self.list_img.append(Picture(word, pic, i, par=self))
             except IndexError:
                 pass
 
     def choose_word(self, button):
-        print(button.text())
+        """Смотрит, какое слово выбрал пользователь"""
         if len(self.all_words) > 1:
             self.word = button.text()
             self.now_button, self.last_button = button, self.now_button
@@ -89,7 +92,7 @@ class Game(QWidget):
             self.word = button.text()
 
     def fill_in_words(self):
-
+        """Заполняет словами"""
         self.widget = QWidget()
         self.scrollArea.setWidget(self.widget)
         self.hor_lay = QHBoxLayout(self.widget)
@@ -104,6 +107,7 @@ class Game(QWidget):
         self.hor_lay.addStretch(0)
 
     def check_all_right(self):
+        """Проверяет, привильно ли ответил пользователь"""
         self.flag = True
         try:
             for i in range(3):
@@ -115,21 +119,25 @@ class Game(QWidget):
             return False
 
     def to_green(self):
+        """Если верно сопоставил, то становится зеленым"""
         self.pic.button.setStyleSheet("")
         self.pic.button.setStyleSheet("background-color: rgb(0, 255, 0);")
 
     def return_ind(self):
+        """Возвращает индекс элемента по значению"""
         for i in range(len(self.all_words)):
             if self.all_words[i] == self.word:
                 return i
         return -1
 
     def del_word_from_list(self):
+        """Удаляет слова из списка"""
         if self.return_ind() != -1:
             self.all_words.pop(self.return_ind())
             self.fill_in_words()
 
     def to_red(self):
+        """Закрашивает выбранное слово в красный"""
         self.pic.button.setStyleSheet("")
         self.pic.button.setStyleSheet("background-color: rgb(255, 0, 0);")
 
@@ -152,7 +160,7 @@ class Game(QWidget):
 
     def make_dict_for_game(self):
         dict = {}
-        for i in range(6):
+        for i in range(len(self.pictures)):
             try:
                 dict[self.pictures[i]] = self.words[i]
             except IndexError:
@@ -162,9 +170,11 @@ class Game(QWidget):
     def check(self, button):
         """Функция для проверки"""
         self.number_pic = int(button.objectName())  # номер объекта, к которому принадлежит картинка
+        print(self.list_img)
         self.pic = self.list_img[self.number_pic]
         if self.pic.check(self.word):
-            self.pic.right = True
+            if self.pic.count_trying == 0:
+                self.list_first.append(self.pic.path)
             self.del_word_from_list()
             self.to_green()
 
@@ -172,27 +182,22 @@ class Game(QWidget):
             self.to_red()
             self.pic.count_trying += 1
         if not self.words:
+            self.delete_from_grid()
             self.delete_cards()
 
-    def find_ind(self, pic):
-        word = pic.word
-        for i in range(len(self.list_img)):
-            if self.list_img[i].word == word:
+    def find_ind(self, path):
+        for i in range(len(self.pictures)):
+            if self.pictures[i] == path:
                 return i
         return -1
 
+    def delete_from_grid(self):
+        """Удаляет все из grid"""
+        while self.grid.count():
+            item = self.grid.takeAt(0)
+            widget = item.widget()
+            widget.deleteLater()
 
-    def delete_cards(self):
-        for i in self.list_img:
-            ind = self.find_ind(i)
-            if ind != -1:
-                self.list_img.pop(self.find_ind(i))
-
-        self.list_first = []
-        self.fill_in_pic()
-        self.fill_in_words()
-        for i in self.list_img:
-            i.count_trying = 0
     def end_of_game(self):
         """Когда ты выучил все слова"""
         reply = QMessageBox.question(self, 'Конец, вы молодец!',
@@ -202,6 +207,42 @@ class Game(QWidget):
         if reply == QMessageBox.Yes:
             self.par.show()
             self.hide()
+
+    def make_new_words(self):
+        for i in self.list_img:
+            self.all_words.append(i.word)
+
+    def find_ind_2(self, path):
+        for i in range(len(self.list_img)):
+            if self.list_img[i].path == path:
+                return i
+        return -1
+
+    def delete_cards(self):
+        """Удаляет карточки те, на которые он отвелтил с первого раза"""
+        for i in self.list_first:
+            ind = self.find_ind(i)
+            if ind != -1:
+                path = self.pictures[ind]
+                ind2 = self.find_ind_2(path)
+                self.pictures.pop(ind)
+                self.list_img.pop(ind2)
+
+
+        self.list_first = []
+        if self.pictures:
+            #self.words = [i.word for i in self.all_cards]
+            #self.pictures = [i.path_to_img for i in self.all_cards]  # список всех путей к картинкам
+            print(self.pictures)
+            print(self.words)
+            self.list_img = []
+            self.fill_in_pic()
+            self.make_new_words()
+            self.fill_in_words()
+
+        else:
+            self.end_of_game()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -139,7 +139,7 @@ class EditSet(QDialog, Ui_Dialog):
 
     def before_the_deliion(self):
         reply = QMessageBox.question(self, 'Выбор',
-                                     "Вы точно хотите удалить этот сет?", QMessageBox.Yes |
+                                     "Вы точно хотите удалить этот набор?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:

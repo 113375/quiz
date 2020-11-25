@@ -91,5 +91,5 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.head_label.setText(_translate("Dialog", "редактирование"))
         self.choose_all_button.setText(_translate("Dialog", "Выбрать все"))
-        self.delete_set_button.setText(_translate("Dialog", "Удалить сет"))
+        self.delete_set_button.setText(_translate("Dialog", "Удалить набор"))
         self.save_editions_button.setText(_translate("Dialog", "Сохранить изменения"))
