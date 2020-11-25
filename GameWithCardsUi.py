@@ -41,10 +41,10 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.label_2)
         self.word = QtWidgets.QLineEdit(self.verticalLayoutWidget)
         self.word.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font-size: 18px;\n"
-"background-color: rgb(254, 252, 255);\n"
-"border-radius: 30px;\n"
-"height: 30px;")
+                                "font-size: 18px;\n"
+                                "background-color: rgb(254, 252, 255);\n"
+                                "border-radius: 30px;\n"
+                                "height: 30px;")
         self.word.setObjectName("word")
         self.horizontalLayout.addWidget(self.word)
         self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
@@ -54,10 +54,10 @@ class Ui_Dialog(object):
         self.horizontalLayout.addWidget(self.label)
         self.check_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.check_button.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font-size: 19px;\n"
-"background-color: rgb(254, 252, 255);\n"
-"border-radius: 30px;\n"
-"height: 30px;")
+                                        "font-size: 19px;\n"
+                                        "background-color: rgb(254, 252, 255);\n"
+                                        "border-radius: 30px;\n"
+                                        "height: 30px;")
         self.check_button.setObjectName("check_button")
         self.horizontalLayout.addWidget(self.check_button)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -70,12 +70,12 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.right_or_not)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.verticalLayoutWidget)
         self.buttonBox.setStyleSheet("color: rgb(0, 0, 0);\n"
-"font-size: 16px;\n"
-"background-color: rgb(255, 255, 255);\n"
-"\n"
-"")
+                                     "font-size: 16px;\n"
+                                     "background-color: rgb(255, 255, 255);\n"
+                                     "\n"
+                                     "")
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
