@@ -1,4 +1,3 @@
-import pymorphy2
 import random
 
 articles = ['a', "an", 'the']
@@ -22,12 +21,14 @@ def read_and_del_articles(file_path, count):
     end_version = []
     for part in text:
         text1 = part.split()
-        for i in range(len(text)):
+        for i in range(len(text1)):
             if text1[i] in articles:
-                deleted_articles[count_articles] = text1[i]
-                text1[i] = "#"
+                deleted_articles[count_articles] = text1[i].lower()
+                text1[i] = f"({count_articles})"
                 count_articles += 1
         end_version.append(" ".join(text1))
-    return "\n".join(end_version), deleted_articles
 
-
+    if "\n".join(end_version):
+        return "\n".join(end_version), deleted_articles
+    else:
+        return read_and_del_articles(file_path, count)
