@@ -26,7 +26,8 @@ def read_and_del_articles(file_path, count):
                 deleted_articles[count_articles] = text1[i].lower()
                 text1[i] = f"({count_articles})"
                 count_articles += 1
-        end_version.append(" ".join(text1))
+        if " ".join(text1) not in end_version:
+            end_version.append(" ".join(text1))
 
     if "\n".join(end_version):
         return "\n".join(end_version), deleted_articles

@@ -87,8 +87,3 @@ class GameWithText(QMainWindow):
 
         self.hor_lay.addStretch(0)
 
-
-app = QApplication(sys.argv)
-ex = GameWithText(count=1)
-ex.show()
-sys.exit(app.exec())
