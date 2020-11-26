@@ -8,8 +8,9 @@ def read_and_del_articles(file_path, count, items):
     with open(file_path, mode="r", encoding='UTF-8') as file:
         file = file.read()
         file = file.split("\n")
-        for i in range(count):
-            part = random.choice(file)
+        num = random.randint(1, len(file) - count)
+        for i in range(num, num + count):
+            part = file[i]
             if part not in text:
                 text.append(part)
             else:
