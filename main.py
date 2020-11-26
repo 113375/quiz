@@ -46,9 +46,14 @@ class Main(QMainWindow, Ui_MainWindow):
 
     def open_login(self):
         """Вход"""
-        self.log = Login(parent=self)
-        self.hide()
-        self.log.show()
+        reply = QMessageBox.question(self, '',
+                                     "Вы хотите выйте из аккаунта?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            self.log = Login(parent=self)
+            self.hide()
+            self.log.show()
 
     def change_name(self):
         self.name_label.setText(self.name)
@@ -56,7 +61,7 @@ class Main(QMainWindow, Ui_MainWindow):
 
     def quete(self):
         """Выход из аккаунта"""
-        reply = QMessageBox.question(self, 'Точно?',
+        reply = QMessageBox.question(self, '',
                                      "Вы точно хотите выйти из аккаунта?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 
@@ -101,8 +106,8 @@ class Main(QMainWindow, Ui_MainWindow):
     def are_you_sure(self, button):
         self.set_name = button.text()
         """Показывает окно, точно ли они хотят играть именно с этим сетом"""
-        reply = QMessageBox.question(self, '?',
-                                     f"Хотите заучить сет: {self.set_name}", QMessageBox.Yes |
+        reply = QMessageBox.question(self, '',
+                                     f"Хотите заучить набор карточек: {self.set_name}?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:

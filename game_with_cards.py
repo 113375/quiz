@@ -107,7 +107,7 @@ class GameWithCards(QDialog, Ui_Dialog):
     def open_choice(self):
         """Если он захочет закончить игру"""
         """открывает выбор, хочет ли пользователь войти без регистрации"""
-        reply = QMessageBox.question(self, 'Муки выбора',
+        reply = QMessageBox.question(self, '',
                                      "Вы точно хотите прервать игру?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 

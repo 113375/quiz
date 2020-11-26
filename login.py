@@ -45,7 +45,7 @@ class Login(QDialog, Ui_Dialog):
 
     def open_choice(self):
         """открывает выбор, хочет ли пользователь войти без регистрации"""
-        reply = QMessageBox.question(self, 'Снова выбор',
+        reply = QMessageBox.question(self, '',
                                      "Вы точно хотите войти без регистрации?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 

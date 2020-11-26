@@ -111,7 +111,7 @@ class CreateNewSet(QDialog, Ui_Dialog):
 
     def not_unique(self):
         """Вызывает окошко, что имя сета не является уникальным и нужно придумать другое имя"""
-        reply = QMessageBox.question(self, 'Ошибочка',
+        reply = QMessageBox.question(self, 'Ошибка',
                                      f"Сет с таким именем уже имеется, придумайте другое", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:
@@ -126,7 +126,7 @@ class CreateNewSet(QDialog, Ui_Dialog):
             if names:
                 self.not_unique()
         else:
-            reply = QMessageBox.question(self, 'Муки выбора',
+            reply = QMessageBox.question(self, 'М',
                                          "Вы не ввели название, хотите вернуться к выбору карточек?",
                                          QMessageBox.Yes | QMessageBox.No)
 
@@ -153,7 +153,7 @@ class CreateNewSet(QDialog, Ui_Dialog):
             for i in self.active_cards:
                 id_of_card = i.id
                 self.sets_of_card = \
-                self.cur.execute("""SELECT sets FROM Card WHERE id = ?""", (id_of_card,)).fetchone()[0]
+                    self.cur.execute("""SELECT sets FROM Card WHERE id = ?""", (id_of_card,)).fetchone()[0]
                 self.sets_of_card += f"{self.id_of_set};"
                 self.cur.execute("""UPDATE Card
                                             SET sets = ?
@@ -163,15 +163,15 @@ class CreateNewSet(QDialog, Ui_Dialog):
             self.open_succes_bar()
 
     def open_empty_bar(self):
-        reply = QMessageBox.question(self, 'Пусто',
-                                     f"Упс, вы ничего не выбрали", QMessageBox.Yes)
+        reply = QMessageBox.question(self, '',
+                                           f"Упс, вы ничего не выбрали", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:
             self.show()
 
     def open_succes_bar(self):
         """При успешном создании нового сета"""
-        reply = QMessageBox.question(self, 'Успех',
+        reply = QMessageBox.question(self, '',
                                      f"Сет {self.name} успешно создан", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:

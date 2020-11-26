@@ -124,7 +124,7 @@ class DeleteCards(QDialog, Ui_Dialog):
 
     def open_succes_bar(self):
         """При успешном создании пользователя"""
-        reply = QMessageBox.question(self, 'Успех',
+        reply = QMessageBox.question(self, '',
                                      f"Выбранные карточки успешно удалены", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:
@@ -132,7 +132,7 @@ class DeleteCards(QDialog, Ui_Dialog):
             self.hide()
 
     def open_choice(self):
-        reply = QMessageBox.question(self, 'Выбор опять',
+        reply = QMessageBox.question(self, '',
                                      "Вы точно хотите удалить эти карточки?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 

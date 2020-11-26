@@ -24,7 +24,7 @@ class ChangePassword(QDialog):
 
     def open_choice(self):
         """открывает выбор, хочет ли пользователь вернуться к регистрации"""
-        reply = QMessageBox.question(self, 'Message',
+        reply = QMessageBox.question(self, '',
                                      "Вы точно хотите вернуться к регистрации?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 
@@ -69,7 +69,7 @@ class ChangePassword(QDialog):
 
     def open_succes_bar(self):
         """При успешном создании пользователя"""
-        reply = QMessageBox.question(self, 'Message',
+        reply = QMessageBox.question(self, '',
                                      f"Пароль успешно обновлен", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:

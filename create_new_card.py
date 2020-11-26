@@ -56,7 +56,7 @@ class CreateNewCard(QWidget):
 
     def open_succes_bar(self):
         """При успешном создании карточки"""
-        reply = QMessageBox.question(self, 'Успех',
+        reply = QMessageBox.question(self, '',
                                      f"Карточка {self.word} - {self.translate} созданна успешно", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:
@@ -69,7 +69,7 @@ class CreateNewCard(QWidget):
             self.word = self.word.strip()
             self.ask_translate()
         else:
-            reply = QMessageBox.question(self, 'муки выбора',
+            reply = QMessageBox.question(self, '',
                                          "Вы точно хотите вернуться на главную?", QMessageBox.Yes |
                                          QMessageBox.No, QMessageBox.No)
 
@@ -94,7 +94,7 @@ class CreateNewCard(QWidget):
             self.load_image()
             self.translate = self.translate.strip()
         else:
-            reply = QMessageBox.question(self, 'Снова выбор',
+            reply = QMessageBox.question(self, '',
                                          "Вы точно хотите вернуться шаг назад?", QMessageBox.Yes |
                                          QMessageBox.No, QMessageBox.No)
             if reply == QMessageBox.Yes:

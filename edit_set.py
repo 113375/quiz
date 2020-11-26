@@ -138,7 +138,7 @@ class EditSet(QDialog, Ui_Dialog):
             self.layout_SArea.addWidget(QLabel("Упс, тут пока что пусто, но вы можете это исправить"))
 
     def before_the_deliion(self):
-        reply = QMessageBox.question(self, 'Выбор',
+        reply = QMessageBox.question(self, '',
                                      "Вы точно хотите удалить этот набор?", QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 
@@ -147,7 +147,7 @@ class EditSet(QDialog, Ui_Dialog):
 
     def open_succes_bar(self):
         """При успешномудалении сета"""
-        reply = QMessageBox.question(self, 'Успех',
+        reply = QMessageBox.question(self, '',
                                      f"Сет успешно удален", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:
@@ -156,7 +156,7 @@ class EditSet(QDialog, Ui_Dialog):
 
     def open_succes_bar_after_changing(self):
         """после успешного обновления сета"""
-        reply = QMessageBox.question(self, 'Успех',
+        reply = QMessageBox.question(self, '',
                                      f"Сет успешно обновлен", QMessageBox.Yes)
 
         if reply == QMessageBox.Yes:
