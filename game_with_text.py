@@ -11,12 +11,12 @@ from func_for_texts import read_and_del_articles
 
 
 class GameWithText(QMainWindow):
-    def __init__(self, par=None, count=1):
+    def __init__(self, items=[], par=None, count=1):
         super(GameWithText, self).__init__()
         list_of_files = os.listdir("texts")
         list_of_files.pop(0)
         file = random.choice(list_of_files)
-        self.text = read_and_del_articles(f"texts/{file}", count)
+        self.text = read_and_del_articles(f"texts/{file}", count, items=items)
         self.dict = self.text[1]
         self.all_labels = []
         uic.loadUi("game3.ui", self)

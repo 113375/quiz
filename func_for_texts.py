@@ -1,9 +1,7 @@
 import random
 
-articles = ['a', "an", 'the']
 
-
-def read_and_del_articles(file_path, count):
+def read_and_del_articles(file_path, count, items):
     """Возвращает полученный текст и словарь с ключами в виде их позиции"""
     deleted_articles = {}
     text = []
@@ -22,7 +20,7 @@ def read_and_del_articles(file_path, count):
     for part in text:
         text1 = part.split()
         for i in range(len(text1)):
-            if text1[i] in articles:
+            if text1[i] in items:
                 deleted_articles[count_articles] = text1[i].lower()
                 text1[i] = f"({count_articles})"
                 count_articles += 1

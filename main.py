@@ -1,7 +1,7 @@
 import sys
 import sqlite3
 from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox, QButtonGroup, QInputDialog
+from PyQt5.QtWidgets import QMessageBox, QButtonGroup
 from PyQt5.QtWidgets import QMainWindow, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
 from login import Login
 from create_new_card import CreateNewCard
@@ -11,7 +11,7 @@ from create_new_set import CreateNewSet
 from edit_sets import ChooseSet
 from mainUi import Ui_MainWindow
 from choose_game import ChooseGame
-from game_with_text import GameWithText
+from choice_ex import ChoiceEx
 
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -34,10 +34,8 @@ class Main(QMainWindow, Ui_MainWindow):
         self.game_with_words.clicked.connect(self.exercises)
 
     def exercises(self):
-        i, okPressed = QInputDialog.getInt(self, "Введите количество абзацев", "", 1, 1, 20, 1)
-        if okPressed:
-            self.g = GameWithText(count=i, par=self)
-            self.g.show()
+        self.x = ChoiceEx(self)
+        self.x.show()
 
 
 

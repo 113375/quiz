@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>277</width>
+    <width>403</width>
     <height>211</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>403</width>
+    <height>211</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>403</width>
+    <height>211</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -18,7 +30,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>261</width>
+     <width>391</width>
      <height>191</height>
     </rect>
    </property>
@@ -67,7 +79,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item alignment="Qt::AlignHCenter">
      <widget class="QDialogButtonBox" name="buttonBox">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
