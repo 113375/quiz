@@ -1,6 +1,5 @@
 import random
 
-
 def read_and_del_articles(file_path, count, items):
     """Возвращает полученный текст и словарь с ключами в виде их позиции"""
     deleted_articles = {}
@@ -31,4 +30,4 @@ def read_and_del_articles(file_path, count, items):
     if "\n".join(end_version):
         return "\n".join(end_version), deleted_articles
     else:
-        return read_and_del_articles(file_path, count)
+        return read_and_del_articles(file_path, count, items)

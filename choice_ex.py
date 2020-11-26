@@ -24,7 +24,7 @@ class ChoiceEx(QDialog):
 
     def start_prep(self):
         if self.thema():
-            i, okPressed = QInputDialog.getInt(self, "Введите количество абзацев", "", 1, 1, 6, 1)
+            i, okPressed = QInputDialog.getInt(self, "Введите количество абзацев", "", 1, 1, 3, 1)
             if okPressed:
                 self.g = GameWithText(count=i, par=self, items=['on', 'at', 'on', "in", "by", "for"], topic=self.topic)
                 self.g.show()
@@ -49,7 +49,7 @@ class ChoiceEx(QDialog):
 
     def start_art(self):
         if self.thema():
-            i, okPressed = QInputDialog.getInt(self, "Введите количество абзацев", "", 1, 1, 6, 1)
+            i, okPressed = QInputDialog.getInt(self, "Введите количество абзацев", "", 1, 1, 3, 1)
             if okPressed:
                 self.g = GameWithText(count=i, par=self, items=['a', 'an', 'the'], topic=self.topic)
                 self.g.show()

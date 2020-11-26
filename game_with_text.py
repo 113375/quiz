@@ -15,6 +15,7 @@ class GameWithText(QMainWindow):
         super(GameWithText, self).__init__()
         list_of_files = os.listdir(f"texts/{topic}")
         list_of_files.pop(0)
+        self.par = par
         file = random.choice(list_of_files)
         self.text = read_and_del_articles(f"texts/{topic}/{file}", count, items=items)
         self.dict = self.text[1]
@@ -30,6 +31,18 @@ class GameWithText(QMainWindow):
 
         self.GREEN = "rgb(0, 200, 0)"
         self.RED = "rgb(200, 0, 0)"
+        self.next.clicked.connect(self.back)
+
+
+    def back(self):
+        reply = QMessageBox.question(self, '',
+                                     f"Вы точно хотите вернуть на шаг назад?",
+                                     QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            self.par.show()
+            self.hide()
 
     def counting_gaps(self):
         count = 0
@@ -67,9 +80,12 @@ class GameWithText(QMainWindow):
             line.setDisabled(True)
             label.setStyleSheet(f"color: {color}; font-size: 20px;")
 
+        self.fill_in_word()
+
         QMessageBox.question(self, '',
                              f"Всего правильных ответов: {self.count}/ {len(self.dict)}",
                              QMessageBox.Yes)
+
 
     def fill_in_words(self):
         """Заполняет словами"""
@@ -89,4 +105,21 @@ class GameWithText(QMainWindow):
             self.hor_lay.addWidget(self.line)
 
         self.hor_lay.addStretch(0)
+
+    def fill_in_word(self):
+        self.text = self.text[0].split()
+        self.text_b.setText("")
+        print(len(self.text))
+        for i in range(len(self.text)):
+            try:
+                """Ищет те элементы, на чьих местах стояли слова"""
+                if self.text[i][0] == "(" and self.text[i][2] == ")" or self.text[i][0] == "(" and self.text[i][2] == ")":
+                    num = int(self.text[i][1])
+                    self.text[i] = f"({num}.{self.dict[num]})"
+            except IndexError:
+                print("Ошибка")
+        print("ok")
+        self.text_b.setText(" ".join(self.text))
+
+
 

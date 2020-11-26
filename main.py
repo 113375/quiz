@@ -13,7 +13,6 @@ from mainUi import Ui_MainWindow
 from choose_game import ChooseGame
 from choice_ex import ChoiceEx
 
-
 class Main(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
