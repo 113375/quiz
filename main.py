@@ -1,7 +1,7 @@
 import sys
 import sqlite3
 from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox, QButtonGroup
+from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem, QMessageBox, QButtonGroup, QInputDialog
 from PyQt5.QtWidgets import QMainWindow, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
 from login import Login
 from create_new_card import CreateNewCard
@@ -11,6 +11,7 @@ from create_new_set import CreateNewSet
 from edit_sets import ChooseSet
 from mainUi import Ui_MainWindow
 from choose_game import ChooseGame
+from game_with_text import GameWithText
 
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -30,6 +31,15 @@ class Main(QMainWindow, Ui_MainWindow):
         self.delete_cards.clicked.connect(self.delete_card)  # подключает функцию удаления карточек
         self.create_new_set.clicked.connect(self.new_set)  # подключает функцию создания нового сета
         self.edit_set.clicked.connect(self.edit_sets)  # подключает редактирование сетов
+        self.game_with_words.clicked.connect(self.exercises)
+
+    def exercises(self):
+        i, okPressed = QInputDialog.getInt(self, "Введите количество абзацев", "", 1, 1, 20, 1)
+        if okPressed:
+            self.g = GameWithText(count=i, par=self)
+            self.g.show()
+
+
 
     def delete_card(self):
         self.delete = DeleteCards(self)

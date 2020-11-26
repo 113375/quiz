@@ -154,6 +154,7 @@ class Ui_MainWindow(object):
 "border-radius: 20px;\n"
 "height: 40px;\n"
 "font: 18pt \"Al Nile\";")
+
         self.show_all.setObjectName("show_all")
         self.verticalLayout_3.addWidget(self.show_all, 0, QtCore.Qt.AlignHCenter)
         self.new_card = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
@@ -186,6 +187,24 @@ class Ui_MainWindow(object):
 "font: 18pt \"Al Nile\";")
         self.create_new_set.setObjectName("create_new_set")
         self.verticalLayout_3.addWidget(self.create_new_set, 0, QtCore.Qt.AlignHCenter)
+
+        self.game_with_words = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.game_with_words.sizePolicy().hasHeightForWidth())
+        self.game_with_words.setSizePolicy(sizePolicy)
+        self.game_with_words.setMinimumSize(QtCore.QSize(360, 0))
+        self.game_with_words.setMaximumSize(QtCore.QSize(9999, 16777215))
+        self.game_with_words.setStyleSheet("background-color: rgb(0, 0, 0);\n"
+                                          "color: rgb(255, 250, 255);\n"
+                                          "border-radius: 20px;\n"
+                                          "height: 40px;\n"
+                                          "font: 18pt \"Al Nile\";")
+        self.game_with_words.setObjectName("game_with_words")
+        self.verticalLayout_3.addWidget(self.game_with_words, 0, QtCore.Qt.AlignHCenter)
+
+
         self.tabWidget.addTab(self.tab_3, "")
         self.verticalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -214,4 +233,5 @@ class Ui_MainWindow(object):
         self.show_all.setText(_translate("MainWindow", "Посмотреть все картчоки"))
         self.new_card.setText(_translate("MainWindow", "Создать карточку"))
         self.create_new_set.setText(_translate("MainWindow", "Сделать новый набор из карточек"))
+        self.game_with_words.setText(_translate("MainWindow", "Задания по английскому"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "Главная"))
