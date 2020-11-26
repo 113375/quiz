@@ -7,7 +7,7 @@ def read_and_del_articles(file_path, count):
     """Возвращает полученный текст и словарь с ключами в виде их позиции"""
     deleted_articles = {}
     text = []
-    with open(file_path, mode="r") as file:
+    with open(file_path, mode="r", encoding='UTF-8') as file:
         file = file.read()
         file = file.split("\n")
         for i in range(count):

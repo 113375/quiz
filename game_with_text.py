@@ -14,6 +14,7 @@ class GameWithText(QMainWindow):
     def __init__(self, par=None, count=1):
         super(GameWithText, self).__init__()
         list_of_files = os.listdir("texts")
+        list_of_files.pop(0)
         file = random.choice(list_of_files)
         self.text = read_and_del_articles(f"texts/{file}", count)
         self.dict = self.text[1]
@@ -24,6 +25,8 @@ class GameWithText(QMainWindow):
         self.all_lines = []
         self.fill_in_words()
         self.checkButton.clicked.connect(self.counting_gaps)
+
+        self.setWindowTitle("Задание")
 
         self.GREEN = "rgb(0, 200, 0)"
         self.RED = "rgb(200, 0, 0)"
