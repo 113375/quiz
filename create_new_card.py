@@ -38,8 +38,8 @@ class CreateNewCard(QWidget):
         """Достаем id главного сета, основного"""
         id_of_main_set = self.cur.execute("""SELECT main_set FROM User WHERE Login = ?""", (self.par.login,)).fetchone()
         """Запихиваем картинку в папку с картинками"""
-        self.lenght = len(self.cur.execute("""SELECT id FROM Card""").fetchall()) #Чтобы знать, какой номер дать карточке
-
+        self.lenght = len(self.cur.execute("""SELECT * FROM Card""").fetchall()) #Чтобы знать, какой номер дать карточке
+        print(self.lenght)
         self.image_name = self.path_to_img.split('/')[-1]
         self.file = open(f"images/image{self.lenght}", mode="wb")
         shutil.copyfile(self.path_to_img, f'images/image{self.lenght}')
