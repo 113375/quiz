@@ -12,7 +12,7 @@ def translation(word, lang):
     }
 
     headers = {
-        'Authorization': 'Bearer t1.9euelZrMz5WUlZmVmovNnJ6Qko3Hie3rnpWai46Zz5zInYzGzMuam42SnZrl8_dCfgAC-u8fBzJ7_N3z9wItfgH67x8HMnv8.zfa3iYbW8F2ou3gHe4Vqu15939AOUbTYxdB3566pfOvICHt7D-35-Izy_ib4yQvInnyTp39gsD_cAnP0YkYhBQ',
+        'Authorization': 'Bearer t1.9euelZqelJGKzsiMyMmSlovLzZSXje3rnpWai46Zz5zInYzGzMuam42SnZrl8_dpCX4B-u93eWcz_t3z9yk4ewH673d5ZzP-.WL9IIYcDvnO4xj7hNIGCDSKsxldkrm3v_CQDYJjn8thZogR9xzO5XSdlYv3dMWw2qwqDvLjlw_t_gdcRXrLhCA',
         'Content-Type': 'application/json'}
 
     response = requests.post(

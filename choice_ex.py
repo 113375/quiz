@@ -31,6 +31,7 @@ class ChoiceEx(QDialog):
                 self.hide()
 
     def thema(self):
+        """Выбор темы """
         topic, okPressed = QInputDialog.getItem(self, "Выберете тему для текста", "Укажите тему",
                                                 ("Еда", "Наука", "Путешествия"), 1, False)
         if okPressed:
