@@ -66,6 +66,7 @@ class GameWithText(QMainWindow):
             self.check_all()
 
     def check_all(self):
+        self.checkButton.setDisabled(True)
         self.count = 0
         for i in range(len(self.all_lines)):
             text = self.all_lines[i].text()
